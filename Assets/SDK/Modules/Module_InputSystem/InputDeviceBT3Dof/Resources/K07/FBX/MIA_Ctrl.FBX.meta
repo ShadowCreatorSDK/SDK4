@@ -1,0 +1,124 @@
+fileFormatVersion: 2
+guid: c29cebe02595fe84da547e3f17a8ba81
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: _[CM]_AppButton
+    100002: _[CM]_Body
+    100004: _[CM]_DPad_Down
+    100006: _[CM]_DPad_Up
+    100008: _[CM]_HomeButton
+    100010: _[CM]_TouchPad
+    100012: _[CM]_TriggerKey
+    100014: //RootNode
+    400000: _[CM]_AppButton
+    400002: _[CM]_Body
+    400004: _[CM]_DPad_Down
+    400006: _[CM]_DPad_Up
+    400008: _[CM]_HomeButton
+    400010: _[CM]_TouchPad
+    400012: _[CM]_TriggerKey
+    400014: //RootNode
+    2100000: 'Material #25'
+    2300000: _[CM]_AppButton
+    2300002: _[CM]_Body
+    2300004: _[CM]_DPad_Down
+    2300006: _[CM]_DPad_Up
+    2300008: _[CM]_HomeButton
+    2300010: _[CM]_TouchPad
+    2300012: _[CM]_TriggerKey
+    3300000: _[CM]_AppButton
+    3300002: _[CM]_Body
+    3300004: _[CM]_DPad_Down
+    3300006: _[CM]_DPad_Up
+    3300008: _[CM]_HomeButton
+    3300010: _[CM]_TouchPad
+    3300012: _[CM]_TriggerKey
+    4300000: _[CM]_Body
+    4300002: _[CM]_HomeButton
+    4300004: _[CM]_AppButton
+    4300006: _[CM]_TouchPad
+    4300008: _[CM]_DPad_Up
+    4300010: _[CM]_TriggerKey
+    4300012: _[CM]_DPad_Down
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

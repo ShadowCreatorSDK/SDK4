@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc03c6efb55e79469b01d0ff4e3b890, type: 3}
+  m_Name: DeviceList
+  m_EditorClassIdentifier: 
+  androidDevice:
+  - m_XRType: 2
+    SupportInputDevices: 010000000200000004000000
+    modelName: A01
+    GreyAmount: 2
+    GreyCameraResolution: {x: 640, y: 400}
+    HasRGB: 1
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}
+    type: 0
+  - m_XRType: 2
+    SupportInputDevices: 010000000200000004000000
+    modelName: A01_PRO
+    GreyAmount: 0
+    GreyCameraResolution: {x: 0, y: 0}
+    HasRGB: 1
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}
+    type: 1
+  - m_XRType: 2
+    SupportInputDevices: 010000000200000004000000
+    modelName: JIMO
+    GreyAmount: 2
+    GreyCameraResolution: {x: 640, y: 400}
+    HasRGB: 1
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}
+    type: 2
+  - m_XRType: 0
+    SupportInputDevices: 0100000002000000
+    modelName: V01
+    GreyAmount: 2
+    GreyCameraResolution: {x: 640, y: 400}
+    HasRGB: 0
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}
+    type: 3
+  - m_XRType: 0
+    SupportInputDevices: 010000000300000004000000
+    modelName: V02A
+    GreyAmount: 4
+    GreyCameraResolution: {x: 640, y: 480}
+    HasRGB: 1
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}
+    type: 4
+  - m_XRType: 2
+    SupportInputDevices: 010000000300000004000000
+    modelName: HONGHU
+    GreyAmount: 2
+    GreyCameraResolution: {x: 640, y: 480}
+    HasRGB: 0
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}
+    type: 5
+  - m_XRType: 1
+    SupportInputDevices: 01000000
+    modelName: Other
+    GreyAmount: 0
+    GreyCameraResolution: {x: 0, y: 0}
+    HasRGB: 0
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}
+    type: 6
+  iosDevice:
+    m_XRType: 1
+    SupportInputDevices: 01000000
+    modelName: IOS
+    GreyAmount: 0
+    GreyCameraResolution: {x: 0, y: 0}
+    HasRGB: 0
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}
+  standaloneDevice:
+    m_XRType: 3
+    SupportInputDevices: 01000000020000000300000004000000
+    modelName: Standalone
+    GreyAmount: 0
+    GreyCameraResolution: {x: 0, y: 0}
+    HasRGB: 0
+    RGBRotationOffset: {x: 0, y: 0, z: 0}
+    RGBPositionOffset: {x: 0, y: 0, z: 0}

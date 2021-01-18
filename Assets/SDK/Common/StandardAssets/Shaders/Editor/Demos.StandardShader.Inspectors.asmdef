@@ -1,0 +1,16 @@
+{
+    "name": "Demos.StandardShader.Inspectors",
+    "references": [
+        "ShadowSDK.Examples"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

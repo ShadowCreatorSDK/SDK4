@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e6765050038144fa553eb06f7a2696, type: 3}
+  m_Name: SDKConfiguration
+  m_EditorClassIdentifier: 
+  Configs:
+  - section: Module_InputSystem
+    KEY_VALUE:
+    - Name: ActiveGGT26Dof
+      Value: 1
+    - Name: ActiveHead
+      Value: 1
+    - Name: ActiveBT3Dof
+      Value: 0
+    - Name: ActiveKS
+      Value: 0
+    - Name: KSMode6Dof
+      Value: 1
+    - Name: UseK102Model
+      Value: 1
+    - Name: GreyHandOffsetX
+      Value: 0
+    - Name: GreyHandOffsetY
+      Value: 0
+    - Name: GreyHandOffsetZ
+      Value: 0
+    - Name: GGT26DofHandDataLerp
+      Value: 1
+    - Name: GGT26DofHandEffectDuration
+      Value: 2
