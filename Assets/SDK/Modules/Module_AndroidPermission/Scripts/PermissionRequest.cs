@@ -16,22 +16,22 @@ public class PermissionRequest : MonoBehaviour
     void Awake() {
         List<string> permissionList = new List<string>();
 
-        if(Camera) {
+        if(Camera && !Permission.HasUserAuthorizedPermission(Permission.Camera)) {
             permissionList.Add(Permission.Camera);
         }
-        if(ExternalStorageRead) {
+        if(ExternalStorageRead && !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead)) {
             permissionList.Add(Permission.ExternalStorageRead);
         }
-        if(ExternalStorageWrite) {
+        if(ExternalStorageWrite && !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite)) {
             permissionList.Add(Permission.ExternalStorageWrite);
         }
-        if(Microphone) {
+        if(Microphone && !Permission.HasUserAuthorizedPermission(Permission.Microphone)) {
             permissionList.Add(Permission.Microphone);
         }
-        if(FineLocation) {
+        if(FineLocation && !Permission.HasUserAuthorizedPermission(Permission.FineLocation)) {
             permissionList.Add(Permission.FineLocation);
         }
-        if(CoarseLocation) {
+        if(CoarseLocation && !Permission.HasUserAuthorizedPermission(Permission.CoarseLocation)) {
             permissionList.Add(Permission.CoarseLocation);
         }
 

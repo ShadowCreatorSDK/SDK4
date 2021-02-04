@@ -66,19 +66,22 @@ public class SideBoundingBoxRoot : AbstractBoundingBoxRoot
             return;
         }
 
-        if (currDragObjPosition == Vector3.zero)
-        {
-            currDragObjPosition = scPointEventData.Position3D;
-        }
 
         preDragObjPosition = currDragObjPosition;
-        currDragObjPosition = Vector3.Lerp(currDragObjPosition, scPointEventData.Position3D, 0.1f);
+        currDragObjPosition = Vector3.Lerp(currDragObjPosition, scPointEventData.Position3D, 0.5f);
 
-        Vector3 prevDir = Vector3.ProjectOnPlane(preDragObjPosition - boundingBox.BoundingBoxContainer.transform.position, currentRotationAxis).normalized;
-        Vector3 currentDir = Vector3.ProjectOnPlane(currDragObjPosition - boundingBox.BoundingBoxContainer.transform.position, currentRotationAxis).normalized;
+        Vector3 prevDir = Vector3.ProjectOnPlane(preDragObjPosition - scPointEventData.inputDevicePartBase.detectorBase.pointerBase.transform.position, currentRotationAxis).normalized;
+        Vector3 currentDir = Vector3.ProjectOnPlane(currDragObjPosition - scPointEventData.inputDevicePartBase.detectorBase.pointerBase.transform.position, currentRotationAxis).normalized;
         Quaternion q = Quaternion.FromToRotation(prevDir, currentDir);
         q.ToAngleAxis(out float angle, out Vector3 axis);
-        boundingBox.transform.RotateAround(boundingBox.BoundingBoxContainer.transform.position, axis, angle);
+        boundingBox.transform.RotateAround(boundingBox.BoundingBoxContainer.transform.position, axis, -3 * angle);
+
+        //    Vector3 prevDir = Vector3.ProjectOnPlane(preDragObjPosition - boundingBox.BoundingBoxContainer.transform.position, currentRotationAxis).normalized;
+        //    Vector3 currentDir = Vector3.ProjectOnPlane(currDragObjPosition - boundingBox.BoundingBoxContainer.transform.position, currentRotationAxis).normalized;
+        //    Quaternion q = Quaternion.FromToRotation(prevDir, currentDir);
+        //    q.ToAngleAxis(out float angle, out Vector3 axis);
+        //    boundingBox.transform.RotateAround(boundingBox.BoundingBoxContainer.transform.position, axis, angle);
+
     }
 
     public override void OnHandlerPointerDown(PointerEventData eventData)
@@ -89,6 +92,7 @@ public class SideBoundingBoxRoot : AbstractBoundingBoxRoot
             return;
         }
 
+        currDragObjPosition = scPointEventData.Position3D;
         currentRotationAxis = GetRotationAxis(scPointEventData.pointerCurrentRaycast.gameObject.transform);
 
         AudioSystem.getInstance.PlayAudioOneShot(boundingBox.gameObject, boundingBox.RotateStartAudio);

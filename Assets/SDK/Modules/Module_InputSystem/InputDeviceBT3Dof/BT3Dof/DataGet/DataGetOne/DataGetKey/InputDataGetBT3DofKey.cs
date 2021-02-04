@@ -102,9 +102,9 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC.BT3Dof {
                     DebugMy.Log(inputDataGetBT3Dof.inputDeviceBT3DofPart.PartType + " ProcessKeyList:" + inputDataGetBT3Dof.inputDeviceBT3DofPart.PartType + " Add Key:" + inputKeyCode + "  State:" + inputKeyState, this);
 
                     ///Enter别名
-                    if(inputKeyCode == EnterKeyAlias) {
+                    if(inputKeyCode == inputDataGetBT3Dof.inputDeviceBT3DofPart.inputDataBT3Dof.EnterKeyAlias) {
                         inputDataGetBT3Dof.inputDeviceBT3DofPart.inputDataBT3Dof.inputKeys.InputDataAddKey(InputKeyCode.Enter, inputKeyState);
-                        DebugMy.Log(inputDataGetBT3Dof.inputDeviceBT3DofPart.PartType + " ProcessKeyList:" + inputDataGetBT3Dof.inputDeviceBT3DofPart.PartType + " Add (Alias:" + EnterKeyAlias + ") Key:" + InputKeyCode.Enter + "  State:" + inputKeyState, this);
+                        DebugMy.Log(inputDataGetBT3Dof.inputDeviceBT3DofPart.PartType + " ProcessKeyList:" + inputDataGetBT3Dof.inputDeviceBT3DofPart.PartType + " Add (Alias:" + inputDataGetBT3Dof.inputDeviceBT3DofPart.inputDataBT3Dof.EnterKeyAlias + ") Key:" + InputKeyCode.Enter + "  State:" + inputKeyState, this);
                     }
 
                     InputDataGC.GCData.GCKeyList.RemoveAt(0);

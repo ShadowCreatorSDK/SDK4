@@ -20,6 +20,10 @@ namespace SC.XR.Unity.Module_InputSystem {
         /// </summary>
         public InputKeys inputKeys;
 
+        public InputKeyCode EnterKeyAlias = InputKeyCode.Trigger;
+        public InputKeyCode CancelKeyAlias = InputKeyCode.Cancel;
+        public InputKeyCode CalibrationKeyAlias = InputKeyCode.OTHER;
+
         bool _isVaild = false;
 
         /// <summary>

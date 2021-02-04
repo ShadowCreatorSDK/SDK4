@@ -6,11 +6,11 @@ namespace SC.XR.Unity {
             Module_Notice.getInstance.StartNotice(time);
         }
 
-        public static void close() {
+        public static void Close() {
             Module_Notice.getInstance.StopNotice();
         }
 
-        public static void SetNotice(string mainString, string subString, NoticeType type = NoticeType.Warning, float distance = 0.8f, AlignmentType _anchorType = AlignmentType.Center, bool isFollower = true) {
+        public static void SetNotice(string mainString, string subString, NoticeType type = NoticeType.Warning, float distance = 0.8f, AlignmentType _anchorType = AlignmentType.Center, FollowType isFollower = FollowType.True) {
             Module_Notice.getInstance.SetNoticeInfo( mainString,subString,type ,distance, _anchorType, isFollower);
         }
 

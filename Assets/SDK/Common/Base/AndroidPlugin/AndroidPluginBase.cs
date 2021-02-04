@@ -8,7 +8,7 @@ namespace SC.XR.Unity {
         private static AndroidJavaObject mCurrentActivity = null;
         private static AndroidJavaClass mUnityPlayerClass = null;
         private static AndroidJavaObject mContext = null;
-        protected static AndroidJavaObject CurrentActivity {
+        public static AndroidJavaObject CurrentActivity {
             get {
                 if(Application.platform == RuntimePlatform.Android) {
                     if(mCurrentActivity == null && UnityPlayerClass != null) {
@@ -18,7 +18,7 @@ namespace SC.XR.Unity {
                 return mCurrentActivity;
             }
         }
-        protected static AndroidJavaClass UnityPlayerClass {
+        public static AndroidJavaClass UnityPlayerClass {
             get {
                 if(Application.platform == RuntimePlatform.Android) {
                     if(mUnityPlayerClass == null) {
@@ -28,7 +28,7 @@ namespace SC.XR.Unity {
                 return mUnityPlayerClass;
             }
         }
-        protected static AndroidJavaObject Context {
+        public static AndroidJavaObject Context {
             get {
                 if(Application.platform == RuntimePlatform.Android) {
                     if(mContext == null) {

@@ -16,16 +16,25 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceHand.GGT26Dof
 
         private static float thumbAngleMin = 76f;
         private static float thumbAngleMax = 160f;
+        static int[] jointsPerFinger = { 4, 5, 5, 5, 5 };// thumb, index, middle, right, pinky
+
+        static int[] jointsPerFingerSum;
 
         public static void CalculateJointRotations(int handedness, Vector3[] jointPositions, Quaternion[] jointOrientationsOut)
         {
             const int numFingers = 5;
-            int[] jointsPerFinger = { 4, 5, 5, 5, 5 }; // thumb, index, middle, right, pinky
+
+            if (jointsPerFingerSum == null) {
+                jointsPerFingerSum = new int[numFingers];
+                for (int fingerIndex = 0; fingerIndex < numFingers; fingerIndex++) {
+                    jointsPerFingerSum[fingerIndex] = jointsPerFinger.Take(fingerIndex).Sum();
+                }
+            }
 
             for (int fingerIndex = 0; fingerIndex < numFingers; fingerIndex++)
             {
                 int jointsCurrentFinger = jointsPerFinger[fingerIndex];
-                int lowIndex = (int)HandJoint.ThumbTip + jointsPerFinger.Take(fingerIndex).Sum();
+                int lowIndex = (int)HandJoint.ThumbTip + jointsPerFingerSum[fingerIndex];
                 int highIndex = lowIndex + jointsCurrentFinger - 1;
 
                 // for (int jointStartidx = lowIndex; jointStartidx <= highIndex; jointStartidx++)
@@ -72,25 +81,6 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceHand.GGT26Dof
                             Vector3 thumbUpAfter = Vector3.Cross(boneForward, GetThumbRightVector(handedness, jointPositions));
 
                             jointRotation = Quaternion.LookRotation(boneForward, thumbUpAfter);
-
-                            float coef = 0f;
-                            if (handedness == ivHand.mRight)
-                            {
-                                coef = (Vector3.Dot(boneForward.normalized, GetPalmRightVector(handedness, jointPositions).normalized) - thumbRangeMin) / (thumbRangeMax - thumbRangeMin);
-                            }
-                            else
-                            {
-                                coef = -((Vector3.Dot(boneForward.normalized, GetPalmRightVector(handedness, jointPositions).normalized) + thumbRangeMin) / (thumbRangeMax - thumbRangeMin)); 
-                            }
-                            coef = Mathf.Clamp01(coef);
-                            float thumbFourRotateAngle = Mathf.Lerp(thumbAngleMin, thumbAngleMax, coef);
-                            thumbAngle[0] = thumbFourRotateAngle;
-                            thumbAngle[1] = thumbFourRotateAngle - 10f;
-                            thumbAngle[2] = thumbFourRotateAngle;
-
-                            Quaternion rotateThumb90 = Quaternion.AngleAxis(handedness == ivHand.mLeft ? -thumbAngle[highIndex - jointStartidx] : thumbAngle[highIndex - jointStartidx], boneForward);//boneForward);
-
-                            jointRotation = rotateThumb90 * jointRotation;
                         }
                         jointOrientationsOut[jointStartidx] = jointRotation;
                     }
@@ -198,13 +188,15 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceHand.GGT26Dof
 
         private static Vector3 GetThumbRightVector(int handedness, Vector3[] jointPositions)
         {
-            Vector3 thumbMetaCarpal = jointPositions[(int)HandJoint.ThumbMetacarpalJoint];
-            Vector3 thumbBase = jointPositions[(int)HandJoint.ThumbProximalJoint];
-
             Vector3 palmUp = GetPalmUpVector(handedness, jointPositions);
-            Vector3 thumbDir = thumbBase - thumbMetaCarpal;
-
-            return Vector3.Cross(palmUp, thumbDir).normalized;
+            Vector3 wrist = jointPositions[(int)HandJoint.ThumbDistalJoint];
+            Vector3 middleMcp = jointPositions[(int)HandJoint.MiddleKnuckle];
+            Vector3 thumbRight = ((middleMcp - wrist).normalized + palmUp.normalized).normalized;
+            if (handedness == ivHand.mLeft)
+            {
+                thumbRight = -thumbRight;
+            }
+            return thumbRight;
         }
     }
 }

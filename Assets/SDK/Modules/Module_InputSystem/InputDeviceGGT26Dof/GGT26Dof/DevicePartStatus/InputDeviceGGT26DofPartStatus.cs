@@ -16,6 +16,15 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceHand.GGT26Dof {
 
         float timer = 0;
         static bool isUpdateDataThisFrame = false;
+        static bool ISGCPriorityGGT26Dof=false;
+
+        public override void OnSCAwake() {
+            base.OnSCAwake();
+            if (API_Module_SDKConfiguration.HasKey("Module_InputSystem", "ISGCPriorityGGT26Dof")) {
+                ISGCPriorityGGT26Dof = API_Module_SDKConfiguration.GetBool("Module_InputSystem", "ISGCPriorityGGT26Dof", 1);
+                DebugMy.Log("ISGCPriorityGGT26Dof:"+ ISGCPriorityGGT26Dof,this,true);
+            }
+        }
 
         public override void OnSCLateUpdate() {
             base.OnSCLateUpdate();
@@ -39,25 +48,26 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceHand.GGT26Dof {
                 }
             }
 
-            if (inputDeviceHandPart.inputDataHand.isFound == false) {
-                timer += Time.deltaTime;
-                inputDeviceHandPart.inputDataHand.handInfo.lostPercent = timer / inputDeviceHandPart.inputDataHand.handInfo.lostTimer;
+            //if (inputDeviceHandPart.inputDataHand.isFound == false) {
+            //    timer += Time.deltaTime;
+            //    inputDeviceHandPart.inputDataHand.handInfo.lostPercent = timer / inputDeviceHandPart.inputDataHand.handInfo.lostTimer;
 
-                if (inputDeviceHandPart.inputDataHand.handInfo.lostPercent >= 1) {
-                    inputDeviceHandPart.inputDataHand.handInfo.lostPercent = 1;
-                    inputDeviceHandPart.inputDataHand.handInfo.isLost = true;
-                }
-                ///hand都是多少百分比后将手势值设为复位值，以触发UP事件（如果已经Down或者Drag后）
-                //if(inputDeviceHandPart.inputDataHand.handInfo.lostPercent > 0.90f) {
-                //    //Debug.Log("========= lost > 80 :" + inputDeviceHandPart.PartType);
-                //    inputDeviceHandPart.inputDataHand.ResetHandData(inputDeviceHandPart.PartType);
-                //}
-            } else {
+            //    if (inputDeviceHandPart.inputDataHand.handInfo.lostPercent >= 1) {
+            //        inputDeviceHandPart.inputDataHand.handInfo.lostPercent = 1;
+            //        inputDeviceHandPart.inputDataHand.handInfo.isLost = true;
+            //    }
+            //    ///hand都是多少百分比后将手势值设为复位值，以触发UP事件（如果已经Down或者Drag后）
+            //    //if(inputDeviceHandPart.inputDataHand.handInfo.lostPercent > 0.90f) {
+            //    //    //Debug.Log("========= lost > 80 :" + inputDeviceHandPart.PartType);
+            //    //    inputDeviceHandPart.inputDataHand.ResetHandData(inputDeviceHandPart.PartType);
+            //    //}
+            //} else {
 
-                timer = 0;
-                inputDeviceHandPart.inputDataHand.handInfo.lostPercent = 0;
-                inputDeviceHandPart.inputDataHand.handInfo.isLost = false;
-            }
+            //    timer = 0;
+            //    inputDeviceHandPart.inputDataHand.handInfo.lostPercent = 0;
+            //    inputDeviceHandPart.inputDataHand.handInfo.isLost = false;
+            //}
+            inputDeviceHandPart.inputDataHand.handInfo.isLost = !inputDeviceHandPart.inputDataHand.isFound;
 
             if (inputDeviceHandPart.inputDataHand.handInfo.isLost) {
                 inputDeviceHandPart.inputDataBase.isVaild = false;
@@ -65,6 +75,12 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceHand.GGT26Dof {
             } else {
                 inputDeviceHandPart.inputDataBase.isVaild = true;
                 //DebugMy.Log("Hand:" + inputDeviceHandPart.PartType + "  Status: Active", this);
+            }
+
+            if (ISGCPriorityGGT26Dof == true) {
+                if (API_Module_InputSystem.InputDeviceStatus(InputDeviceType.KS) || API_Module_InputSystem.InputDeviceStatus(InputDeviceType.BT3Dof)) {
+                    inputDeviceHandPart.inputDataBase.isVaild = false;
+                }
             }
 
         }

@@ -82,7 +82,6 @@ namespace SC.XR.Unity.Module_SDKSystem {
                 if(pause) {
                     ModuleStop();
                 } else {
-
                     ModuleStart();
                 }
             }
@@ -126,7 +125,12 @@ namespace SC.XR.Unity.Module_SDKSystem {
             }
             DontDestroyOnLoad(gameObject);
             Instance = this;
-            DebugMy.isShowNormalLog = DebugLog;
+            if (API_Module_SDKConfiguration.HasKey("Module_InputSystem", "ShowDebugLog")) {
+                DebugMy.isShowNormalLog = API_Module_SDKConfiguration.GetBool("Module_InputSystem", "ShowDebugLog", 0);
+            } else {
+                DebugMy.isShowNormalLog = DebugLog;
+            }
+
 
             DebugMy.Log("Awake", this, true);
             DebugMy.Log("SDK Version:"+API_Module_SDKVersion.Version,this,true);
@@ -157,7 +161,6 @@ namespace SC.XR.Unity.Module_SDKSystem {
         IEnumerator WaitSlamAction() {
             yield return new WaitUntil(() => SvrManager.Instance.IsRunning);
             InputSystem?.ModuleStart();
-            waitSlam = null;
         }
 
         public override void OnSCDisable() {
@@ -165,7 +168,13 @@ namespace SC.XR.Unity.Module_SDKSystem {
 
             if (waitSlam != null) {
                 StopCoroutine(waitSlam);
+                waitSlam = null;
             }
+            if (isRunningCoroutine != null) {
+                StopCoroutine(isRunningCoroutine);
+                isRunningCoroutine = null;
+            }
+
             IsRunning = false;
 
             //不能操作 灭屏唤醒否则起不来
@@ -179,9 +188,11 @@ namespace SC.XR.Unity.Module_SDKSystem {
 
             if (waitSlam != null) {
                 StopCoroutine(waitSlam);
+                waitSlam = null;
             }
             if (isRunningCoroutine != null) {
                 StopCoroutine(isRunningCoroutine);
+                isRunningCoroutine = null;
             }
 
             SvrManager?.gameObject.SetActive(false);

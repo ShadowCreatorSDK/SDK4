@@ -23,7 +23,9 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC.KS {
 
         public override void OnSCStart() {
             base.OnSCStart();
-            modelBase.ModuleStop();
+            
+            modelBase?.ModuleStop();
+
             if (inputDeviceKSPart.inputDataGC.GCType == GCType.K102 && modelK102) {
                 modelBase = ModelGC = modelK102;
             }else if (inputDeviceKSPart.inputDataGC.GCType == GCType.K101 && modelK101) {
@@ -40,7 +42,7 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC.KS {
 
         public override void OnSCDisable() {
             base.OnSCDisable();
-            RemoveAllModule();
+            RemoveModule(modelBase);
             modelBase = ModelGC = null;
         }
 

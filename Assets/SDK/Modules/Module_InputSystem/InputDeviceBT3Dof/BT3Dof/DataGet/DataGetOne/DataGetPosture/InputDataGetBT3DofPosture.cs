@@ -86,10 +86,10 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC.BT3Dof {
         void EffectByCalibrationKey() {
             InputKeyState inputKeyState;
 
-            inputDataGetBT3Dof.inputDeviceBT3DofPart.inputDataBT3Dof.inputKeys.inputKeyPressDic.TryGetValue(CalibrationKey, out inputKeyState);
+            inputDataGetBT3Dof.inputDeviceBT3DofPart.inputDataBT3Dof.inputKeys.inputKeyPressDic.TryGetValue(inputDataGetBT3Dof.inputDeviceBT3DofPart.inputDataBT3Dof.CalibrationKeyAlias, out inputKeyState);
 
             if(inputKeyState == InputKeyState.LONG) {
-                DebugMy.Log(CalibrationKey+" LONG Key Reset", this,true);
+                DebugMy.Log(inputDataGetBT3Dof.inputDeviceBT3DofPart.inputDataBT3Dof.CalibrationKeyAlias+ " LONG Key Reset", this,true);
                 Update3DofDeltaEulerAngles();
             }
             //DebugMy.Log("OnUpdateRotation: " + inputDeviceHandShankPart.inputDataHandShank.rotation.eulerAngles, this);

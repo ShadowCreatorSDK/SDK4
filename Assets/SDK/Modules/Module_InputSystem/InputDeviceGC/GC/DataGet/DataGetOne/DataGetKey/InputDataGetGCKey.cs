@@ -10,14 +10,6 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC {
 
         public InputDataGetGC inputDataGetGC;
 
-
-        /// <summary>
-        /// Enter别名，默认Trigger触发Enter键
-        /// </summary>
-        public InputKeyCode EnterKeyAlias = InputKeyCode.Trigger;
-
-        public InputKeyCode CancelKeyAlias = InputKeyCode.OTHER;
-
         public InputDataGetGCKey(InputDataGetGC _inputDataGetGC) : base(_inputDataGetGC) {
             inputDataGetGC = _inputDataGetGC;
         }

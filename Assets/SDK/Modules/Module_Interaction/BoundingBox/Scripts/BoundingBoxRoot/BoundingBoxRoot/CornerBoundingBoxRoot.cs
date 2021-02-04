@@ -82,9 +82,12 @@ public class CornerBoundingBoxRoot : AbstractBoundingBoxRoot
 
         Vector3 newScale = initialScaleOnGrabStart * scaleFactor;
 
-        boundingBox.transform.localScale = newScale;
+        if (scaleFactor > 0) {
 
-        boundingBox.transform.position = initialPositionOnGrabStart * scaleFactor + (1 - scaleFactor) * oppositeCorner;
+            boundingBox.transform.localScale = newScale;
+            boundingBox.transform.position = initialPositionOnGrabStart * scaleFactor + (1 - scaleFactor) * oppositeCorner;
+        }
+
     }
 
     public override void OnHandlerPointerDown(PointerEventData eventData)

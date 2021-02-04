@@ -26,7 +26,7 @@ namespace SC.XR.Unity.Module_InputSystem {
         /// <summary>
         /// 按键的按下状态
         /// </summary>
-        public Dictionary<InputKeyCode, InputKeyState> inputKeyPressDic;
+        public Dictionary<InputKeyCode, InputKeyState> inputKeyPressDic = new Dictionary<InputKeyCode, InputKeyState>();
 
         /// <summary>
         /// 按键的简单处理，获取按下状态，存储于inputKeyPressDic列表
@@ -81,10 +81,14 @@ namespace SC.XR.Unity.Module_InputSystem {
             }
             UpdateKeyEvent();
         }
-
         protected virtual void UpdateKeyEvent() {
             lock(inputKeyDic) {
-                inputKeyPressDic = new Dictionary<InputKeyCode, InputKeyState>(inputKeyDic);
+
+                //for lower GC
+                inputKeyPressDic.Clear();
+                foreach (var key in inputKeyDic) {
+                    inputKeyPressDic.Add(key.Key, key.Value);
+                }
 
                 //foreach(var item in inputKeyPressDic) {
                 //    if(item.Value != InputKeyState.Null) {
@@ -100,7 +104,11 @@ namespace SC.XR.Unity.Module_InputSystem {
                     }
                 }
 
-                inputDataPreviousKeyDic = new Dictionary<InputKeyCode, InputKeyState>(inputKeyDic);
+                //for lower GC
+                inputDataPreviousKeyDic.Clear();
+                foreach (var key in inputKeyDic) {
+                    inputDataPreviousKeyDic.Add(key.Key, key.Value);
+                }
 
                 //foreach(var item in inputKeyPressDic) {
                 //    if(item.Value != InputKeyState.Null) {

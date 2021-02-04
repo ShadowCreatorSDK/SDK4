@@ -234,8 +234,11 @@ namespace SC.XR.Unity.Module_InputSystem {
             return (1f / (linePointCount - 1)) * stepNum;
         }
 
+        Vector3[] positions;
         public Vector3[] GetLinePointers(int pointerCount) {
-            Vector3[] positions = new Vector3[pointerCount];
+            if (positions == null || positions.Length != pointerCount) {
+                positions = new Vector3[pointerCount];
+            }
             for(int i = 0; i < positions.Length; i++) {
                 float normalizedDistance = GetNormalizedPointAlongLine(pointerCount,i);
                 positions[i] = GetPoint(normalizedDistance);

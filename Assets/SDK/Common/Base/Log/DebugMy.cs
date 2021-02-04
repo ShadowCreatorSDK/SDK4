@@ -47,7 +47,7 @@ namespace SC.XR.Unity {
         public static void LogError(string msg, object o) {
             if(isShowErrorLog == false)
                 return;
-            Tag = "[ FrameCount:" + Time.frameCount + " ]";
+            Tag = "[SDK: "+ SdkVersion + " ][ FrameCount:" + Time.frameCount + " ]";
 
             if(o == null) {
                 if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor) {

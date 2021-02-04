@@ -8,7 +8,7 @@ using UnityEngine;
 namespace SC.XR.Unity.Module_InputSystem {
     public abstract class DetectorBase : SCModuleMono {
 
-        public IPointer currentPointer;
+        public PointerBase currentPointer;
 
         InputDevicePartBase _inputDevicePartBase;
         public InputDevicePartBase inputDevicePartBase {

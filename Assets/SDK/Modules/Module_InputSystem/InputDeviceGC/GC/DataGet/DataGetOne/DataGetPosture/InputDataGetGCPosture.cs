@@ -19,8 +19,6 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC {
             }
         }
 
-        public InputKeyCode CalibrationKey = InputKeyCode.Function;
-
         public override void OnSCLateUpdate() {
             base.OnSCLateUpdate();
             UpdateRotation();

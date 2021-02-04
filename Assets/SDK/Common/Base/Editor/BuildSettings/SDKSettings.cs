@@ -156,9 +156,9 @@ public class SDKSettings : EditorWindow {
 
         EditorGUILayout.BeginHorizontal();
 
-        GUILayout.Label("Minimum API Level:API24(or higher)");
+        GUILayout.Label("Minimum API Level:API26(or higher)");
 
-        if(PlayerSettings.Android.minSdkVersion < AndroidSdkVersions.AndroidApiLevel24) {
+        if(PlayerSettings.Android.minSdkVersion < AndroidSdkVersions.AndroidApiLevel26) {
 
             GUIStyle styleSlide = new GUIStyle();
             styleSlide.normal.textColor = Color.red;
@@ -306,7 +306,7 @@ public class SDKSettings : EditorWindow {
     }
     static bool PlayerCheck() {
         bool isApply = true;
-        if(PlayerSettings.Android.minSdkVersion < AndroidSdkVersions.AndroidApiLevel24) {
+        if(PlayerSettings.Android.minSdkVersion < AndroidSdkVersions.AndroidApiLevel26) {
             isApply = false;
         }
         if(PlayerSettings.GetApiCompatibilityLevel(BuildTargetGroup.Android) != ApiCompatibilityLevel.NET_4_6) {
@@ -344,7 +344,7 @@ public class SDKSettings : EditorWindow {
     }
     static void PlayerSet() {
 
-        PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel24;
+        PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel26;
         PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
 
         PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.Android, ApiCompatibilityLevel.NET_4_6);

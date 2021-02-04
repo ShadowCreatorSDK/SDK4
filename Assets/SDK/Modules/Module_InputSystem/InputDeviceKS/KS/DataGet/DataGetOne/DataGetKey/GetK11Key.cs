@@ -15,18 +15,41 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC.KS {
             this.inputDataGetKSKey = inputDataGetKSKey;
         }
 
+        public override void OnSCAwake() {
+            base.OnSCAwake();
+            if (inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType == InputDevicePartType.KSLeft) {
+                if (API_Module_SDKConfiguration.HasKey("Module_InputSystem", "K11_Left_EnterKeyAlias")) {
+                    InputKeyCode keyparse;
+                    inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.EnterKeyAlias = System.Enum.TryParse<InputKeyCode>(API_Module_SDKConfiguration.GetString("Module_InputSystem", "K11_Left_EnterKeyAlias", "LTrigger"), false, out keyparse) ? keyparse : InputKeyCode.LTrigger;
+                } else {
+                    inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.EnterKeyAlias = InputKeyCode.LTrigger;
+                }
+            } else if (inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType == InputDevicePartType.KSRight) {
+                if (API_Module_SDKConfiguration.HasKey("Module_InputSystem", "K11_Right_EnterKeyAlias")) {
+                    InputKeyCode keyparse;
+                    inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.EnterKeyAlias = System.Enum.TryParse<InputKeyCode>(API_Module_SDKConfiguration.GetString("Module_InputSystem", "K11_Right_EnterKeyAlias", "RTrigger"), false, out keyparse) ? keyparse : InputKeyCode.RTrigger;
+                } else {
+                    inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.EnterKeyAlias = InputKeyCode.RTrigger;
+                }
+            }
+            DebugMy.Log(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " inputDataGetKSKey.EnterKeyAlias:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.EnterKeyAlias,this,true);
 
-
-        public override void OnSCStart() {
-            base.OnSCStart();
-
-            //if(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType == InputDevicePartType.KSLeft)
-            //    inputDataGetKSKey.EnterKeyAlias = InputKeyCode.Y;
-            //else 
-            
-            if(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType == InputDevicePartType.KSRight)
-                inputDataGetKSKey.EnterKeyAlias = InputKeyCode.Y;
-
+            if (inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType == InputDevicePartType.KSLeft) {
+                if (API_Module_SDKConfiguration.HasKey("Module_InputSystem", "K11_Left_CalibrationKeyAlias")) {
+                    InputKeyCode keyparse;
+                    inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.CalibrationKeyAlias = System.Enum.TryParse<InputKeyCode>(API_Module_SDKConfiguration.GetString("Module_InputSystem", "K11_Left_CalibrationKeyAlias", "DOWN"), false, out keyparse) ? keyparse : InputKeyCode.DOWN;
+                } else {
+                    inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.CalibrationKeyAlias = InputKeyCode.DOWN;
+                }
+            } else if (inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType == InputDevicePartType.KSRight) {
+                if (API_Module_SDKConfiguration.HasKey("Module_InputSystem", "K11_Right_CalibrationKeyAlias")) {
+                    InputKeyCode keyparse;
+                    inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.CalibrationKeyAlias = System.Enum.TryParse<InputKeyCode>(API_Module_SDKConfiguration.GetString("Module_InputSystem", "K11_Right_CalibrationKeyAlias", "A"), false, out keyparse) ? keyparse : InputKeyCode.A;
+                } else {
+                    inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.CalibrationKeyAlias = InputKeyCode.A;
+                }
+            }
+            DebugMy.Log(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " inputDataGetKSKey.CalibrationKeyAlias:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataGC.CalibrationKeyAlias, this, true);
         }
 
         public override void OnSCLateUpdate() {
@@ -111,14 +134,14 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC.KS {
                     DebugMy.Log(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " ProcessKeyList:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " Add Key:" + inputKeyCode + "  State:" + inputKeyState, this, true);
 
                     ///Enter别名
-                    if(inputKeyCode == inputDataGetKSKey.EnterKeyAlias) {
+                    if(inputKeyCode == inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataKS.EnterKeyAlias) {
                         inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataKS.inputKeys.InputDataAddKey(InputKeyCode.Enter, inputKeyState);
-                        DebugMy.Log(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " ProcessKeyList:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " Add (Alias:" + inputDataGetKSKey.EnterKeyAlias + ") Key:" + InputKeyCode.Enter + "  State:" + inputKeyState, this, true);
+                        DebugMy.Log(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " ProcessKeyList:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " Add (Alias:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataKS.EnterKeyAlias + ") Key:" + InputKeyCode.Enter + "  State:" + inputKeyState, this, true);
                     }
 
-                    if (inputKeyCode == inputDataGetKSKey.CancelKeyAlias) {
+                    if (inputKeyCode == inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataKS.CancelKeyAlias) {
                         inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataKS.inputKeys.InputDataAddKey(InputKeyCode.Cancel, inputKeyState);
-                        DebugMy.Log(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " ProcessKeyList:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " Add (Alias:" + inputDataGetKSKey.CancelKeyAlias + ") Key:" + InputKeyCode.Cancel + "  State:" + inputKeyState, this, true);
+                        DebugMy.Log(inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " ProcessKeyList:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.PartType + " Add (Alias:" + inputDataGetKSKey.inputDataGetKS.inputDeviceKSPart.inputDataKS.CancelKeyAlias + ") Key:" + InputKeyCode.Cancel + "  State:" + inputKeyState, this, true);
                     }
 
 

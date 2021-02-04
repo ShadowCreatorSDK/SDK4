@@ -155,7 +155,7 @@ MonoBehaviour:
   leftOverlay: {fileID: 20000013883443020}
   rightOverlay: {fileID: 20000010413438022}
   monoOverlay: {fileID: 20000010687537192}
-  fadeOverlay: {fileID: 864404561}
+  fadeOverlay: {fileID: 0}
   reticleOverlay: {fileID: 0}
   modifyPosition: {x: 0, y: 0, z: 0}
   modifyOrientation: {x: 0, y: 0, z: 0, w: 1}
@@ -384,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4000010179817820
 Transform:
   m_ObjectHideFlags: 0

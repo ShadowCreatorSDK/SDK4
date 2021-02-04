@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 namespace SC.XR.Unity
 {
   
@@ -25,7 +26,7 @@ namespace SC.XR.Unity
 
         public string _mainText = "";
         public string _minorText = "";
-        public bool _isFollow = true;
+        public FollowType _isFollow = FollowType.False;
         [Range(0.1f, 10.0f)]
         public float _distance = 1.2f;
         public float _durationTime = 3f;
@@ -130,7 +131,7 @@ namespace SC.XR.Unity
 
 
 
-        public void SetNoticeInfo(string mainString, string subString, NoticeType type = NoticeType.Warning, float distance = 0.8f, AlignmentType _anchorType = AlignmentType.Center, bool isFollower = true)
+        public void SetNoticeInfo(string mainString, string subString, NoticeType type = NoticeType.Warning, float distance = 0.8f, AlignmentType _anchorType = AlignmentType.Center, FollowType isFollower = FollowType.True)
         {
             SetMainText(mainString);
             SetSubText(subString);
@@ -228,16 +229,16 @@ namespace SC.XR.Unity
                 }
             }
         }
-        private void SetIsFollow(bool isFollow)
+        private void SetIsFollow(FollowType isFollow)
         {
-            if (isFollow)
+            if (isFollow== FollowType.True)
             {
                 if (_Follower?.enabled == false)
                 {
                     _Follower.enabled = true;
                 }
             }
-            else
+            else if(isFollow == FollowType.False)
             {
                 if (_Follower?.enabled == true)
                 {

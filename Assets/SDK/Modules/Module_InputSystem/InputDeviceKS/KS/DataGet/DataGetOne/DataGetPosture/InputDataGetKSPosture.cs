@@ -31,25 +31,6 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC.KS {
         
         public override void OnSCStart() {
             base.OnSCStart();
-
-            if (inputDataGetKS.inputDeviceKSPart.PartType == InputDevicePartType.KSLeft) {
-                if (inputDataGetKS.inputDeviceKSPart.inputDataGC.GCType == GCType.K102) {
-                    CalibrationKey = InputKeyCode.LFunction;
-                }else if (inputDataGetKS.inputDeviceKSPart.inputDataGC.GCType == GCType.K101) {
-                    CalibrationKey = InputKeyCode.LFunction;
-                } else if (inputDataGetKS.inputDeviceKSPart.inputDataGC.GCType == GCType.K11) {
-                    CalibrationKey = InputKeyCode.DOWN;
-                }
-            } else if (inputDataGetKS.inputDeviceKSPart.PartType == InputDevicePartType.KSRight) {
-                if (inputDataGetKS.inputDeviceKSPart.inputDataGC.GCType == GCType.K102) {
-                    CalibrationKey = InputKeyCode.RFunction;
-                }else if (inputDataGetKS.inputDeviceKSPart.inputDataGC.GCType == GCType.K101) {
-                    CalibrationKey = InputKeyCode.RFunction;
-                } else if (inputDataGetKS.inputDeviceKSPart.inputDataGC.GCType == GCType.K11) {
-                    CalibrationKey = InputKeyCode.A;
-                }
-            }
-
             Update3DofDeltaEulerAngles();
         }
 
@@ -158,10 +139,10 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC.KS {
         void EffectByCalibrationKey() {
             InputKeyState inputKeyState;
             
-            inputDataGetKS.inputDeviceKSPart.inputDataKS.inputKeys.inputKeyPressDic.TryGetValue(CalibrationKey, out inputKeyState);
+            inputDataGetKS.inputDeviceKSPart.inputDataKS.inputKeys.inputKeyPressDic.TryGetValue(inputDataGetKS.inputDeviceKSPart.inputDataKS.CalibrationKeyAlias, out inputKeyState);
 
             if(inputKeyState == InputKeyState.DOWN || inputKeyState == InputKeyState.LONG) {
-                DebugMy.Log(CalibrationKey + " LONG Key Reset", this,true);
+                DebugMy.Log(inputDataGetKS.inputDeviceKSPart.inputDataKS.CalibrationKeyAlias + " LONG Key Reset", this,true);
                 Update3DofDeltaEulerAngles();
             }
             //DebugMy.Log("OnUpdateRotation: " + inputDeviceHandShankPart.inputDataHandShank.rotation.eulerAngles, this);

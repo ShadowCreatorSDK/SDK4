@@ -243,7 +243,7 @@ class SvrPluginWin : SvrPlugin
 	}
 
 
-    public override int HandShank_Getbond(int lr) { return 17; }
+    public override int HandShank_Getbond(int lr) { return 17; } //  34;
 
     public override void Shutdown()
 	{

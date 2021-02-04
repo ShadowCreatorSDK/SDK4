@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectDurtion: 4
+  isEnable: 0
 --- !u!114 &2160148988178575988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2160148988178575977}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf2687a5eaf355844bb90bf41eac5bd3, type: 3}
   m_Name: 
@@ -303,7 +304,7 @@ MonoBehaviour:
   _distance: 1.5
   _durationTime: 3
   _type: 1
-  _anchor: 514
+  _anchorType: 2
 --- !u!1 &2160148988694440991
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,12 +34,17 @@ namespace SC.XR.Unity
             serializedObject.Update();
             EditorGUILayout.PropertyField(mainText);
             EditorGUILayout.PropertyField(minorText);
-            EditorGUILayout.PropertyField(isFollow);
-            EditorGUILayout.PropertyField(distance);
             EditorGUILayout.PropertyField(durationTime);
+            EditorGUILayout.PropertyField(isFollow);
+            FollowType layoutFollow = (FollowType)isFollow.enumValueIndex;
+            if (layoutFollow== FollowType.True)
+            {
+                EditorGUILayout.PropertyField(distance);
+                
+                EditorGUILayout.PropertyField(anchortype);
+            }                 
             EditorGUILayout.PropertyField(noticetype);
-            EditorGUILayout.PropertyField(anchortype);
-
+           
             serializedObject.ApplyModifiedProperties();
 
             // Place the button at the bottom

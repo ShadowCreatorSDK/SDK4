@@ -8,7 +8,7 @@ using UnityEngine;
 namespace SC.XR.Unity.Module_InputSystem.InputDeviceHand {
     public class HandDetector : DetectorBase {
 
-        private IPointer handPointer;
+        private PointerBase handPointer;
 
         public InputDeviceHandPart inputDeviceHandPart {
             get {

@@ -1,8 +1,6 @@
 ﻿
 using UnityEngine;
 using UnityEditor;
-using System.Windows.Markup;
-using UnityScript.Steps;
 using Unity.Collections;
 
 [ExecuteAlways]//Script will run in any circumstance

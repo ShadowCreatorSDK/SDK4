@@ -37,3 +37,31 @@ MonoBehaviour:
       Value: 1
     - Name: GGT26DofHandEffectDuration
       Value: 2
+    - Name: K11_Left_EnterKeyAlias
+      Value: LTrigger
+    - Name: K11_Right_EnterKeyAlias
+      Value: RTrigger
+    - Name: K101_Left_EnterKeyAlias
+      Value: LHallForward
+    - Name: K101_Right_EnterKeyAlias
+      Value: RHallForward
+    - Name: K102_Left_EnterKeyAlias
+      Value: LHallForward
+    - Name: K102_Right_EnterKeyAlias
+      Value: RHallForward
+    - Name: K101_Left_CalibrationKeyAlias
+      Value: LFunction
+    - Name: K101_Right_CalibrationKeyAlias
+      Value: RFunction
+    - Name: K102_Left_CalibrationKeyAlias
+      Value: LFunction
+    - Name: K102_Right_CalibrationKeyAlias
+      Value: RFunction
+    - Name: K11_Left_CalibrationKeyAlias
+      Value: DOWN
+    - Name: K11_Right_CalibrationKeyAlias
+      Value: A
+    - Name: ISGCPriorityGGT26Dof
+      Value: 1
+    - Name: ShowDebugLog
+      Value: 0

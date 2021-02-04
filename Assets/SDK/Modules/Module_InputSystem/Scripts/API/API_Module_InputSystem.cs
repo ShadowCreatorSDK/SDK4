@@ -170,4 +170,11 @@ public class API_Module_InputSystem
         }
     }
 
+    public static bool InputDeviceStatus(InputDeviceType deviceType) {
+        if (Module_InputSystem.instance) {
+            return Module_InputSystem.instance.GetInputDeviceStatus(deviceType);
+        }
+        return false;
+    }
+
 }

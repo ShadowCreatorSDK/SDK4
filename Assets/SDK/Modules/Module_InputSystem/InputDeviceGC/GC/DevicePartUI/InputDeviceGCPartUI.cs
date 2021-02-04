@@ -29,10 +29,13 @@ namespace SC.XR.Unity.Module_InputSystem.InputDeviceGC {
         protected virtual void OnUpdateResetLoading() {
             if(inputDeviceGCPart.inputDataGetGC.inputDataGetGCPosture == null)
                 return;
-            if(inputDeviceGCPart.inputDataGC.inputKeys.GetKeyDown(inputDeviceGCPart.inputDataGetGC.inputDataGetGCPosture.CalibrationKey)) {
-                resetLoading.ModuleStart();
-            } else if(inputDeviceGCPart.inputDataGC.inputKeys.GetKeyUp(inputDeviceGCPart.inputDataGetGC.inputDataGetGCPosture.CalibrationKey)) {
-                resetLoading.ModuleStop();
+
+            if (inputDeviceGCPart.inputDataGetGC.inputDataGetGCPosture.postureType == PostureType._3Dof) {
+                if (inputDeviceGCPart.inputDataGC.inputKeys.GetKeyDown(inputDeviceGCPart.inputDataBase.CalibrationKeyAlias)) {
+                    resetLoading.ModuleStart();
+                } else if (inputDeviceGCPart.inputDataGC.inputKeys.GetKeyUp(inputDeviceGCPart.inputDataBase.CalibrationKeyAlias)) {
+                    resetLoading.ModuleStop();
+                }
             }
         }
 

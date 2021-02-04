@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activation: 1
   flattenAxis: 4
-  activeHandle: 0
+  activeHandle: 2
   boxFocusDisplayMat: {fileID: 2100000, guid: 4a9aae3094118f44593e7f8000e24c31, type: 2}
   boxGrabDisplayMat: {fileID: 2100000, guid: 7e4095c5609075846b657c8917aae797, type: 2}
   HandleMaterial: {fileID: 2100000, guid: 986558eab447a9847bbe138149edc1b4, type: 2}
@@ -1921,7 +1921,8 @@ MonoBehaviour:
   scaleMinimum: 0.2
   scaleMaximum: 2
   scaleHandleSize: 0.016
-  SidePrefab: {fileID: 0}
+  SidePrefab: {fileID: 3868891704370700786, guid: 969c9b04d1b1848489de0d6efe6250fc,
+    type: 3}
   rotationHandleSize: 0.016
   showRotationHandleForX: 1
   showRotationHandleForY: 1
